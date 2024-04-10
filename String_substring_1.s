@@ -1,7 +1,7 @@
 // Author  : Victor Ponce
-// Program : Rasm-3 String copy Function
+// Program : Rasm-3 String substring_1 Function
 // Class   : CS3B
-// Subroutine String_copy
+// Subroutine String_substring_1
 // @param  X0 : Points to a null terminated string
 // @param  X1 : Start Index
 // @param  X2 : End Index
