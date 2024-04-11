@@ -14,22 +14,22 @@
 	.text
 String_substring_2:
 	// Push registers
-	STP	X19, X20, [SP, #-16]! // Push X19 and X20 to the stack
-	STP	X21, X22, [SP, #-16]! // Push X21 and X22 to the stack
-	STP	X23, X24, [SP, #-16]! // Push X23 and X24 to the stack
-	STP	X25, X26, [SP, #-16]! // Push X25 and X26 to the stack
-	STP	X27, X28, [SP, #-16]! // Push X27 and X28 to the stack
-	STP	X29, X30, [SP, #-16]! // Push X29 and X30 to the stack
+	STP	X19, X20, [SP, #-16]! 	// Push X19 and X20 to the stack
+	STP	X21, X22, [SP, #-16]! 	// Push X21 and X22 to the stack
+	STP	X23, X24, [SP, #-16]! 	// Push X23 and X24 to the stack
+	STP	X25, X26, [SP, #-16]! 	// Push X25 and X26 to the stack
+	STP	X27, X28, [SP, #-16]! 	// Push X27 and X28 to the stack
+	STP	X29, X30, [SP, #-16]! 	// Push X29 and X30 to the stack
 
 	/*===== String_substring_1 =====*/
-	MOV	X20, X1					// Move index into X20
+	MOV	X20, X1			// Move index into X20
 loop:
-	LDRB	W22, [X0, X20]			// Load a single byte from X0 into W22
-	STRB	W22, [X2], #1			// Store a single byte from W22 into X2, than increment pointer
-	CBZ	W22, end					// Check for end of string, if so branch to end
+	LDRB	W22, [X0, X20]		// Load a single byte from X0 into W22
+	STRB	W22, [X2], #1		// Store a single byte from W22 into X2, than increment pointer
+	CBZ	W22, end		// Check for end of string, if so branch to end
 
-	ADD	X20, X20, #1			// Increment index
-	B	loop							// Branch to loop
+	ADD	X20, X20, #1		// Increment index
+	B	loop			// Branch to loop
 
 end:
 	/*===== String_substring_1 =====*/
