@@ -13,36 +13,36 @@
 	.text
 String_startsWith_2:
 	// Push registers
-	STP	X19, X20, [SP, #-16]! // Push X19 and X20 to the stack
-	STP	X21, X22, [SP, #-16]! // Push X21 and X22 to the stack
-	STP	X23, X24, [SP, #-16]! // Push X23 and X24 to the stack
-	STP	X25, X26, [SP, #-16]! // Push X25 and X26 to the stack
-	STP	X27, X28, [SP, #-16]! // Push X27 and X28 to the stack
-	STP	X29, X30, [SP, #-16]! // Push X29 and X30 to the stack
+	STP	X19, X20, [SP, #-16]! 	// Push X19 and X20 to the stack
+	STP	X21, X22, [SP, #-16]! 	// Push X21 and X22 to the stack
+	STP	X23, X24, [SP, #-16]! 	// Push X23 and X24 to the stack
+	STP	X25, X26, [SP, #-16]! 	// Push X25 and X26 to the stack
+	STP	X27, X28, [SP, #-16]! 	// Push X27 and X28 to the stack
+	STP	X29, X30, [SP, #-16]! 	// Push X29 and X30 to the stack
 
 	/*===== String_copy =====*/
-	MOV	X19, X0					// Move sz1 into X19
-	MOV	X20, X1					// Move substring into X20
+	MOV	X19, X0			// Move sz1 into X19
+	MOV	X20, X1			// Move substring into X20
 
-	MOV	X0, #1					// Set bool to true
+	MOV	X0, #1			// Set bool to true
 
 loop:
 	LDRB	W21, [X19, X23]		// Load a byte from X19 into W21
 	LDRB	W22, [X20, X24]		// Load a byte from X20 into W22
 
-	CBZ	W22, end					// If W22 is null branch to end
+	CBZ	W22, end		// If W22 is null branch to end
 
-	CMP	W21, W22					// Compare W21 to W22
-	BNE	mismatch					// If not equal branch to mismatch
+	CMP	W21, W22		// Compare W21 to W22
+	BNE	mismatch		// If not equal branch to mismatch
 
-	ADD	X23, X23, #1			// Increment index for sz1
-	ADD	X24, X24, #1			// Increment index for substring
+	ADD	X23, X23, #1		// Increment index for sz1
+	ADD	X24, X24, #1		// Increment index for substring
 
-	B		loop						// Branch to loop
+	B	loop			// Branch to loop
 
 mismatch:
-	MOV X0, #0						// Set bool to false
-	B end								// Branch to end
+	MOV X0, #0			// Set bool to false
+	B end				// Branch to end
 
 end:
 	/*===== String_copy =====*/
