@@ -21,33 +21,33 @@ String_endsWith:
 	STP	X29, X30, [SP, #-16]! // Push X29 and X30 to the stack
 
 	/*===== String_copy =====*/
-	MOV	X19, X0					// Move sz1 into X19
-	MOV	X20, X1					// Move substring into X20
+	MOV	X19, X0			// Move sz1 into X19
+	MOV	X20, X1			// Move substring into X20
 
-	MOV	X23, #14					// Index for sz1
-	MOV	X24, #10					// Index for substring
+	MOV	X23, #14		// Index for sz1
+	MOV	X24, #10		// Index for substring
 
-	MOV	X0, #1					// Set bool to true
+	MOV	X0, #1			// Set bool to true
 loop:
-	LDRB	W21,[X19, X23]			// Load a byte from X19 into W21 at index X23
-	LDRB	W22,[X20, X24]			// Load a byte from X20 into W22 at index X24
+	LDRB	W21,[X19, X23]		// Load a byte from X19 into W21 at index X23
+	LDRB	W22,[X20, X24]		// Load a byte from X20 into W22 at index X24
 
-	CMP	X24, #0					// Compare X24 to 0
-	BGE	continue					// If X24 >= 0 continue
+	CMP	X24, #0			// Compare X24 to 0
+	BGE	continue		// If X24 >= 0 continue
 
-	B 		end						// Branch to end when X24 negative
+	B 	end			// Branch to end when X24 negative
 
 continue:
-	CMP	W21, W22					// Compare W21 to W22
-	BNE	mismatch					// If not equal branch to mismatch
+	CMP	W21, W22		// Compare W21 to W22
+	BNE	mismatch		// If not equal branch to mismatch
 
-	SUB	X23, X23, #1			// Decrement counter
-	SUB	X24, X24, #1			// Decrement counter
-	B	loop							// Branch to loop
+	SUB	X23, X23, #1		// Decrement counter
+	SUB	X24, X24, #1		// Decrement counter
+	B	loop			// Branch to loop
 
 mismatch:
-	MOV	X0, #0					// Set bool to false
-	B		end						// Branch to end
+	MOV	X0, #0			// Set bool to false
+	B	end			// Branch to end
 end:
 	/*===== String_copy =====*/
 
